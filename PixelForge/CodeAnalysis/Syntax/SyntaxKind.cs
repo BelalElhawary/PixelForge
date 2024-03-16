@@ -11,11 +11,14 @@ namespace PixelForge.CodeAnalysis.Syntax
         MinusToken,
         SlashToken,
         StarToken,
+        BangToken,
         CircumflexAccentToken,
+        EqualsEqualsToken,
+        BangEqualsToken,
         OpenParenToken,
         CloseParenToken,
         IdentifierToken,
-        BangToken,
+
 
 
         // Keywords

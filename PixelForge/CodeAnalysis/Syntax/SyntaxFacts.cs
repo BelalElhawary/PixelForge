@@ -10,7 +10,7 @@ namespace PixelForge.CodeAnalysis.Syntax
                 case SyntaxKind.PlusToken:
                 case SyntaxKind.MinusToken:
                 case SyntaxKind.BangToken:
-                    return 6;
+                    return 7;
                 default: return 0;
             }
         }
@@ -20,12 +20,15 @@ namespace PixelForge.CodeAnalysis.Syntax
             switch (kind)
             {
                 case SyntaxKind.CircumflexAccentToken:
-                    return 5;
+                    return 6;
                 case SyntaxKind.StarToken:
                 case SyntaxKind.SlashToken:
-                    return 4;
+                    return 5;
                 case SyntaxKind.PlusToken:
                 case SyntaxKind.MinusToken:
+                    return 4;
+                case SyntaxKind.EqualsEqualsToken:
+                case SyntaxKind.BangEqualsToken:
                     return 3;
                 case SyntaxKind.AndKeyword:
                     return 2;
