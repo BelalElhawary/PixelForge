@@ -1,6 +1,6 @@
-﻿using PixelForge.CodeAnalysis;
-using PixelForge.CodeAnalysis.Binding;
-using PixelForge.CodeAnalysis.Syntax;
+﻿using Otawa;
+using Otawa.CodeAnalysis;
+using Otawa.CodeAnalysis.Syntax;
 
 internal static class Program
 {
@@ -51,9 +51,9 @@ internal static class Program
             }
 
             var syntaxTree = SyntaxTree.Parse(line);
-            var binder = new Binder();
-            var boundExpression = binder.BindExpression(syntaxTree.Root);
-            var diagnostics = syntaxTree.Diagnostics.Concat(binder.Diagnostics).ToArray();
+            var compilation = new Compilation(syntaxTree);
+            var result = compilation.Evaluate();
+            var diagnostics = result.Diagnostics;
 
 
             if (tree)
@@ -68,19 +68,35 @@ internal static class Program
                 if (evaluate)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    var e = new Evaluator(boundExpression);
-                    var result = e.Evaluate();
-                    Console.WriteLine(result);
+                    Console.WriteLine(result.Value);
                 }
             }
             else
             {
                 if (errors)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     foreach (var diagnostic in diagnostics)
                     {
+                        Console.WriteLine();
+
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine(diagnostic);
+                        Console.ResetColor();
+
+                        var prefix = line.Substring(0, diagnostic.Span.Start);
+                        var error = line.Substring(diagnostic.Span.Start, diagnostic.Span.Length);
+                        var suffix = line.Substring(diagnostic.Span.End);
+
+                        Console.Write("    ");
+                        Console.Write(prefix);
+
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.Write(error);
+                        Console.ResetColor();
+
+                        Console.Write(suffix);
+                        Console.WriteLine();
+
                     }
                 }
             }
