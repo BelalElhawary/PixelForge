@@ -14,6 +14,12 @@ namespace PixelForge.CodeAnalysis.Syntax
         CircumflexAccent,
         OpenParenToken,
         CloseParenToken,
+        IdentifierToken,
+
+        // Keywords
+        FalseKeyword,
+        TrueKeyword,
+
 
         // Expression
         LiteralExpression,

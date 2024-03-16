@@ -12,3 +12,4 @@ E:\lambda\server\PixelForge\PixelForge\obj\Debug\net8.0\refint\PixelForge.dll
 E:\lambda\server\PixelForge\PixelForge\obj\Debug\net8.0\PixelForge.pdb
 E:\lambda\server\PixelForge\PixelForge\obj\Debug\net8.0\PixelForge.genruntimeconfig.cache
 E:\lambda\server\PixelForge\PixelForge\obj\Debug\net8.0\ref\PixelForge.dll
+E:\lambda\server\PixelForge\PixelForge\obj\Debug\net8.0\PixelForge.sourcelink.json

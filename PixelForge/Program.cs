@@ -78,7 +78,7 @@ internal static class Program
                 if (errors)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    foreach (var diagnostic in syntaxTree.Diagnostics)
+                    foreach (var diagnostic in diagnostics)
                     {
                         Console.WriteLine(diagnostic);
                     }
@@ -90,10 +90,6 @@ internal static class Program
 
     private static void PrettyPrint(SyntaxNode node, string indent = "", bool isLast = true)
     {
-        //│
-        //├
-        //└
-        //─
         var marker = isLast ? "└───" : "├───";
 
         Console.Write(indent);
@@ -107,8 +103,6 @@ internal static class Program
         }
 
         Console.WriteLine();
-
-        //indent += "    ";
 
         indent += isLast ? "    " : "│   ";
         var lastChild = node.GetChildren().LastOrDefault();

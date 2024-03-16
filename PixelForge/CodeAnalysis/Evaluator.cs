@@ -13,19 +13,19 @@ namespace PixelForge.CodeAnalysis
             _root = root;
         }
 
-        public int Evaluate()
+        public object Evaluate()
         {
             return EvaluateExpression(_root);
         }
 
-        private int EvaluateExpression(BoundExpression root)
+        private object EvaluateExpression(BoundExpression root)
         {
             if (root is BoundLiteralExpression n)
-                return (int)n.Value;
+                return n.Value;
 
             if (root is BoundUnaryExpression u)
             {
-                var operand = EvaluateExpression(u.Operand);
+                var operand = (int)EvaluateExpression(u.Operand);
                 switch (u.OperatorKind)
                 {
                     case BoundUnaryOperatorKind.Identity:
@@ -40,8 +40,8 @@ namespace PixelForge.CodeAnalysis
 
             if (root is BoundBinaryExpression b)
             {
-                var left = EvaluateExpression(b.Left);
-                var right = EvaluateExpression(b.Right);
+                var left = (int)EvaluateExpression(b.Left);
+                var right = (int)EvaluateExpression(b.Right);
                 var op = b.OperatorKind;
 
                 switch (op)

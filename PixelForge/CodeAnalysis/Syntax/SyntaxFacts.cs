@@ -1,3 +1,4 @@
+
 namespace PixelForge.CodeAnalysis.Syntax
 {
     internal static class SyntaxFacts
@@ -26,6 +27,19 @@ namespace PixelForge.CodeAnalysis.Syntax
                 case SyntaxKind.CircumflexAccent:
                     return 3;
                 default: return 0;
+            }
+        }
+
+        public static SyntaxKind GetKeywordKind(string text)
+        {
+            switch (text)
+            {
+                case "true":
+                    return SyntaxKind.TrueKeyword;
+                case "false":
+                    return SyntaxKind.FalseKeyword;
+                default:
+                    return SyntaxKind.IdentifierToken;
             }
         }
     }
