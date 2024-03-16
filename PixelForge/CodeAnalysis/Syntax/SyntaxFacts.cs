@@ -9,7 +9,8 @@ namespace PixelForge.CodeAnalysis.Syntax
             {
                 case SyntaxKind.PlusToken:
                 case SyntaxKind.MinusToken:
-                    return 4;
+                case SyntaxKind.BangToken:
+                    return 6;
                 default: return 0;
             }
         }
@@ -18,14 +19,18 @@ namespace PixelForge.CodeAnalysis.Syntax
         {
             switch (kind)
             {
-                case SyntaxKind.PlusToken:
-                case SyntaxKind.MinusToken:
-                    return 1;
+                case SyntaxKind.CircumflexAccentToken:
+                    return 5;
                 case SyntaxKind.StarToken:
                 case SyntaxKind.SlashToken:
-                    return 2;
-                case SyntaxKind.CircumflexAccent:
+                    return 4;
+                case SyntaxKind.PlusToken:
+                case SyntaxKind.MinusToken:
                     return 3;
+                case SyntaxKind.AndKeyword:
+                    return 2;
+                case SyntaxKind.OrKeyword:
+                    return 1;
                 default: return 0;
             }
         }
@@ -38,6 +43,10 @@ namespace PixelForge.CodeAnalysis.Syntax
                     return SyntaxKind.TrueKeyword;
                 case "false":
                     return SyntaxKind.FalseKeyword;
+                case "and":
+                    return SyntaxKind.AndKeyword;
+                case "or":
+                    return SyntaxKind.OrKeyword;
                 default:
                     return SyntaxKind.IdentifierToken;
             }

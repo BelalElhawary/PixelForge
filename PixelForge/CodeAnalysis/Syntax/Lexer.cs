@@ -11,15 +11,14 @@ namespace PixelForge.CodeAnalysis.Syntax
         }
 
         public IEnumerable<string> Diagnostics => _diagnostics;
-        private char Current
+        private char Current => Peek(0);
+        private char Lookahead => Peek(1);
+        private char Peek(int offset)
         {
-            get
-            {
-                if (_position >= _text.Length)
-                    return '\0';
-
-                return _text[_position];
-            }
+            var index = _position + offset;
+            if (index >= _text.Length)
+                return '\0';
+            return _text[index];
         }
 
         private void Next()
@@ -78,7 +77,9 @@ namespace PixelForge.CodeAnalysis.Syntax
                 case ')':
                     return new SyntaxToken(SyntaxKind.CloseParenToken, _position++, ")", null);
                 case '^':
-                    return new SyntaxToken(SyntaxKind.CircumflexAccent, _position++, "^", null);
+                    return new SyntaxToken(SyntaxKind.CircumflexAccentToken, _position++, "^", null);
+                case '!':
+                    return new SyntaxToken(SyntaxKind.BangToken, _position++, "!", null);
             }
 
             if (!char.IsWhiteSpace(Current))

@@ -11,20 +11,24 @@ namespace PixelForge.CodeAnalysis.Syntax
         MinusToken,
         SlashToken,
         StarToken,
-        CircumflexAccent,
+        CircumflexAccentToken,
         OpenParenToken,
         CloseParenToken,
         IdentifierToken,
+        BangToken,
+
 
         // Keywords
         FalseKeyword,
         TrueKeyword,
-
+        AndKeyword,
+        OrKeyword,
 
         // Expression
         LiteralExpression,
         UnaryExpression,
         BinaryExpression,
         ParenthesizedExpression,
+
     }
 }
