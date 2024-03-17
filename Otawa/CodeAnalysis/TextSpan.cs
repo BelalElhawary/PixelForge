@@ -12,9 +12,4 @@
         public int Length { get; }
         public int End => Start + Length;
     }
-
-    public sealed class VariableSymbol
-    {
-
-    }
 }

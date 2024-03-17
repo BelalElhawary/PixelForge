@@ -4,39 +4,40 @@ namespace Otawa.CodeAnalysis
 {
     internal sealed class Evaluator
     {
-        private readonly Dictionary<string, object> _variables;
+        private readonly Dictionary<VariableSymbol, object?> _variables;
         private readonly BoundExpression _root;
 
-        public Evaluator(BoundExpression root)
+        public Evaluator(BoundExpression root, Dictionary<VariableSymbol, object?> variables)
         {
             _root = root;
-        }
-
-        public Evaluator(BoundExpression root, Dictionary<string, object> variables) : this(root)
-        {
             _variables = variables;
         }
 
-        public object Evaluate()
+        // public Evaluator(BoundExpression root, Dictionary<VariableSymbol, object?> variables) : this(root)
+        // {
+        //     _variables = variables;
+        // }
+
+        public object? Evaluate()
         {
             return EvaluateExpression(_root);
         }
 
-        private object EvaluateExpression(BoundExpression root)
+        private object? EvaluateExpression(BoundExpression root)
         {
             if (root is BoundLiteralExpression n)
                 return n.Value;
 
             if (root is BoundVariableExpression v)
-                return _variables[v.Name];
+                return _variables[v.Variable];
 
-            if(root is BoundAssignmentExpression a)
+            if (root is BoundAssignmentExpression a)
             {
                 var value = EvaluateExpression(a.Expression);
-                _variables[a.Name] = value;
+                _variables[a.Variable] = value;
                 return value;
             }
-            
+
 
             if (root is BoundUnaryExpression u)
             {

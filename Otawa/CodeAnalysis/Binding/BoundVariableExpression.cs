@@ -2,15 +2,14 @@
 {
     internal sealed class BoundVariableExpression : BoundExpression
     {
-        public BoundVariableExpression(string name, Type type)
+        public BoundVariableExpression(VariableSymbol variableSymbol)
         {
-            Name = name;
-            Type = type;
+            Variable = variableSymbol;
         }
         public override BoundNodeKind Kind => BoundNodeKind.VariableExpression;
 
-        public string Name { get; }
-        public override Type Type { get; }
+        public VariableSymbol Variable { get; }
+        public override Type Type => Variable.Type;
 
     }
 }

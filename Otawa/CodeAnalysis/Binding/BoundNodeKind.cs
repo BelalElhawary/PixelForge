@@ -4,7 +4,7 @@ namespace Otawa.CodeAnalysis.Binding
     {
         LiteralExpression,
         VariableExpression,
-        AssignmantExpression,
+        AssignmentExpression,
         UnaryExpression,
         BinaryExpression,
     }
