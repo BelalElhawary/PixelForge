@@ -6,6 +6,8 @@ internal static class Program
 {
     private static void Main()
     {
+        var variables = new Dictionary<string, object>();
+
         bool tree = false;
         bool errors = true;
         bool nulls = false;
@@ -52,7 +54,7 @@ internal static class Program
 
             var syntaxTree = SyntaxTree.Parse(line);
             var compilation = new Compilation(syntaxTree);
-            var result = compilation.Evaluate();
+            var result = compilation.Evaluate(variables);
             var diagnostics = result.Diagnostics;
 
 
