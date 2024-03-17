@@ -6,7 +6,7 @@ internal static class Program
 {
     private static void Main()
     {
-        var variables = new Dictionary<string, object>();
+        var variables = new Dictionary<VariableSymbol, object?>();
 
         bool tree = false;
         bool errors = true;
